@@ -26,7 +26,13 @@ namespace ImageResizer
             
             DirectoryInfo inDirectory = new DirectoryInfo(inPath);
             DirectoryInfo outDirectory = new DirectoryInfo(outPath);
-            
+
+            // Удаление файлов в результирующей папке
+            foreach (var file in outDirectory.GetFiles())
+            {
+                file.Delete();
+            }
+
             FileInfo[] myFiles = inDirectory.GetFiles();
 
             // проверка совпадений переданных для игнорирования имен файлов и имен файлов в исходной папке
