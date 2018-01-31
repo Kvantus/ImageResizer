@@ -23,7 +23,18 @@ namespace ImageResizer
         public static void Resize(string inPath, string outPath, ILogWriter logWriter, params string[] ignoringFiles)
         {
             long limit = 1048576; // размер в байтах. если файл меньше указанного размера, уменьшение не происходит
-            
+
+            // предварительное создание папок, если их не существует
+            if (!Directory.Exists(inPath))
+            {
+                Directory.CreateDirectory(inPath);
+            }
+            if (!Directory.Exists(outPath))
+            {
+                Directory.CreateDirectory(outPath);
+            }
+
+
             DirectoryInfo inDirectory = new DirectoryInfo(inPath);
             DirectoryInfo outDirectory = new DirectoryInfo(outPath);
 
