@@ -25,6 +25,7 @@ namespace ImageResizer
                 return;
             }
 
+            // проверка, является ли текущий пользователь сотрудников перечисленных подразделений
             UserVerificator verificator = new UserVerificator("Development Managers", "Base Managers");
             if (!verificator.IsUserValid())
             {
@@ -41,9 +42,7 @@ namespace ImageResizer
             string outPath = myDesktop + "\\" + "OutputImages";
 
             using (LogWriter logWriter = new LogWriter(inPath))
-            {
-                string[] filesToIgnore = { myProgram, logWriter.FileName };
-
+            {                                            //игнорировать файлы - текущее приложение + логи
                 Resizer.Resize(inPath, outPath, logWriter, myProgram, logWriter.FileName);
             }
 

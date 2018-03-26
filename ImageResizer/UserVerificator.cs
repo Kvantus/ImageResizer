@@ -43,18 +43,12 @@ namespace ImageResizer
                 // получение массива групп пользователя
                 var currentUserGroups = myUser.GetAuthorizationGroups();
 
+                var join = from uGroup in currentUserGroups
+                           join fGroup in FriendlyGroups
+                           on uGroup.Name equals fGroup
+                           select uGroup.Name;
 
-                var groupsQuery = from row in currentUserGroups
-                                    select row.Name;
-
-                // поиск совпадений в списке дозволенных групп и в списке групп текущего пользователя
-                var joinResult = from row1 in groupsQuery
-                                 join row2 in FriendlyGroups
-                                 on row1 equals row2
-                                 select row1;
-
-
-                if (joinResult.Count() == 0)
+                if (join.Count() == 0)
                 {
                     return false;
                 }
