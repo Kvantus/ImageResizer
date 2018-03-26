@@ -20,7 +20,7 @@ namespace ImageResizer
 
         static void Main(string[] args)
         {
-            if (DateTime.Today > DateTime.Parse("1.04.2018", CultureInfo.GetCultureInfo("ru-RU")))
+            if (DateTime.Today > new DateTime(2018, 10, 1))
             {
                 return;
             }
