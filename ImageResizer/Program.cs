@@ -20,7 +20,7 @@ namespace ImageResizer
 
         static void Main(string[] args)
         {
-            if (DateTime.Today > new DateTime(2018, 10, 1))
+            if (DateTime.Today > new DateTime(2019, 04, 6))
             {
                 return;
             }
