@@ -44,7 +44,7 @@ namespace ImageResizer
                 file.Delete();
             }
 
-            FileInfo[] myFiles = inDirectory.GetFiles();
+            FileInfo[] myFiles = inDirectory.GetFiles("*.*", SearchOption.AllDirectories);
 
             // проверка совпадений переданных для игнорирования имен файлов и имен файлов в исходной папке
             var query = from x in myFiles
@@ -67,7 +67,7 @@ namespace ImageResizer
                 if (ignoringFiles.Contains(oldFile.Name))
                 {
                     continue;
-                }
+                };
 
                 // Если файл весит меньше лимита, выводится сообщение и переходим к следующей итерации
                 if (oldFile.Length < limit)
@@ -151,6 +151,12 @@ namespace ImageResizer
                 {
                     oldFile.Delete();
                 }
+            }
+
+            DirectoryInfo[] oldDirs = inDirectory.GetDirectories();
+            foreach (var dir in oldDirs)
+            {
+                dir.Delete(true);
             }
         }
 
