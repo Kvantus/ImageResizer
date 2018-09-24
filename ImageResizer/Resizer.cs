@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using System.Drawing.Imaging;
 using System.Drawing;
+using System.Threading;
 
 namespace ImageResizer
 {
@@ -153,10 +154,21 @@ namespace ImageResizer
                 }
             }
 
-            DirectoryInfo[] oldDirs = inDirectory.GetDirectories();
+            DirectoryInfo[] oldDirs = inDirectory.GetDirectories("*", SearchOption.AllDirectories);
             foreach (var dir in oldDirs)
             {
-                dir.Delete(true);
+                if (dir.Exists)
+                {
+
+                    try
+                    {
+                        dir.Delete(true);
+                    }
+                    catch (Exception) // в случае, когда пользователь не вышел из удаляемой папки - пропустить ошибку.
+                    {
+
+                    }
+                }
             }
         }
 
