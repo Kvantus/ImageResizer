@@ -54,9 +54,11 @@ namespace ImageResizer
         /// </summary>
         private static void EndProgramm()
         {
+            int timeOut = 2;
+
             MessageManager.WriteInfoMessage(new string('-', 50));
             MessageManager.WriteInfoMessage("Программа закроется через:");
-            for (int i = 3; i > 0; i--)
+            for (int i = timeOut; i > 0; i--)
             {
                 Console.WriteLine(i);
                 Thread.Sleep(1000);
