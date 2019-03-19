@@ -20,10 +20,10 @@ namespace ImageResizer
 
         static void Main(string[] args)
         {
-            if (DateTime.Today > new DateTime(2019, 04, 6))
-            {
-                return;
-            }
+            //if (DateTime.Today > new DateTime(2019, 04, 6))
+            //{
+            //    return;
+            //}
 
             // проверка, является ли текущий пользователь сотрудников перечисленных подразделений
             UserVerificator verificator = new UserVerificator("Development Managers", "Base Managers");
